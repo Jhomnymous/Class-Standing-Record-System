@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Record System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Class Record System</h1>
+            <div class="term-selector">
+                <button id="midterm-btn" class="active">Midterm</button>
+                <button id="finalterm-btn">Final Term</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="student-management">
+                    <h2>Student Management</h2>
+                    <div class="form-group">
+                        <input type="text" id="student-id" placeholder="Student ID">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="student-name" placeholder="Full Name">
+                    </div>
+                    <div class="form-group">
+                        <select id="grade-category">
+                            <option value="">Select Category</option>
+                            <option value="quiz">Quiz</option>
+                            <option value="activities">Activities</option>
+                            <option value="major-exams">Major Exams</option>
+                            <option value="project">Project</option>
+                            <option value="assignments">Assignments</option>
+                            <option value="recitation">Recitation</option>
+                            <option value="character">Character</option>
+                            <option value="attendance">Attendance</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="grade-score" placeholder="Score">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="grade-max" placeholder="Max Score">
+                    </div>
+                    <div class="button-group">
+                        <button id="add-grade-btn">Add Grade</button>
+                        <button id="update-grade-btn" disabled>Update Grade</button>
+                        <button id="clear-btn">Clear</button>
+                    </div>
+                </div>
+
+                <div class="student-list-container">
+                    <h2>Students</h2>
+                    <div class="search-box">
+                        <input type="text" id="search-student" placeholder="Search student...">
+                    </div>
+                    <div class="student-list" id="student-list">
+                        <!-- Students will be listed here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <div class="grades-display">
+                    <div class="grades-header">
+                        <h2 id="grades-title">Midterm Grades</h2>
+                        <div class="grade-categories">
+                            <button class="category-btn active" data-category="all">All</button>
+                            <button class="category-btn" data-category="quiz">Quiz</button>
+                            <button class="category-btn" data-category="activities">Activities</button>
+                            <button class="category-btn" data-category="major-exams">Major Exams</button>
+                            <button class="category-btn" data-category="project">Project</button>
+                            <button class="category-btn" data-category="assignments">Assignments</button>
+                            <button class="category-btn" data-category="recitation">Recitation</button>
+                            <button class="category-btn" data-category="character">Character</button>
+                            <button class="category-btn" data-category="attendance">Attendance</button>
+                        </div>
+                    </div>
+                    <div class="grades-table-container">
+                        <table id="grades-table">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Score</th>
+                                    <th>Max Score</th>
+                                    <th>Percentage</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="grades-body">
+                                <!-- Grades will be displayed here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="grade-summary">
+                    <h2>Grade Summary</h2>
+                    <div class="summary-cards">
+                        <div class="summary-card">
+                            <h3>Quizzes (20%)</h3>
+                            <div class="grade-value" id="quiz-grade">0.00</div>
+                            <div class="equivalent" id="quiz-equivalent">-</div>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Activities (20%)</h3>
+                            <div class="grade-value" id="activities-grade">0.00</div>
+                            <div class="equivalent" id="activities-equivalent">-</div>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Major Exams (20%)</h3>
+                            <div class="grade-value" id="exams-grade">0.00</div>
+                            <div class="equivalent" id="exams-equivalent">-</div>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Projects (15%)</h3>
+                            <div class="grade-value" id="project-grade">0.00</div>
+                            <div class="equivalent" id="project-equivalent">-</div>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Assignments (10%)</h3>
+                            <div class="grade-value" id="assignments-grade">0.00</div>
+                            <div class="equivalent" id="assignments-equivalent">-</div>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Recitation (5%)</h3>
+                            <div class="grade-value" id="recitation-grade">0.00</div>
+                            <div class="equivalent" id="recitation-equivalent">-</div>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Character (5%)</h3>
+                            <div class="grade-value" id="character-grade">0.00</div>
+                            <div class="equivalent" id="character-equivalent">-</div>
+                        </div>
+                        <div class="summary-card">
+                            <h3>Attendance (5%)</h3>
+                            <div class="grade-value" id="attendance-grade">0.00</div>
+                            <div class="equivalent" id="attendance-equivalent">-</div>
+                        </div>
+                    </div>
+                    <div class="final-grade-card">
+                        <h3 id="term-display">Midterm Grade</h3>
+                        <div class="final-grade-value" id="final-grade">0.00</div>
+                        <div class="final-equivalent" id="final-equivalent">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="overall-grades-modal" id="overall-modal">
+            <div class="modal-content">
+                <span class="close-btn" id="close-modal">&times;</span>
+                <h2>Overall Grades</h2>
+                <table id="overall-grades-table">
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Midterm Grade</th>
+                            <th>Final Term Grade</th>
+                            <th>Overall Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody id="overall-grades-body">
+                        <!-- Overall grades will be displayed here -->
+                    </tbody>
+                </table>
+                <button id="print-overall-btn">Print Overall Grades</button>
+            </div>
+        </div>
+
+        <button id="view-overall-btn">View Overall Grades</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
